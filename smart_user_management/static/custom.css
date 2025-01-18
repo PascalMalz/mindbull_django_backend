@@ -1,0 +1,27 @@
+/* Style the heading */
+h1 {
+    font-size: 24px;
+    color: #333; /* Change the color to your preference */
+}
+
+/* Style the paragraph text */
+p {
+    font-size: 16px;
+    color: #666; /* Change the color to your preference */
+}
+
+/* Style the button */
+button {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px; /* Rounded corners */
+    cursor: pointer;
+}
+
+/* Style the button on hover */
+button:hover {
+    background-color: #0056b3; /* Hover background color */
+}

@@ -1,0 +1,86 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+
+{% block content %}
+<style>
+    /* Style the heading */
+    h1 {
+        font-size: 24px;
+        color: #333;
+        /* Change the color to your preference */
+        text-align: center;
+        /* Center-align the heading */
+    }
+
+    /* Style the paragraph text */
+    p {
+        font-size: 16px;
+        color: #666;
+        /* Change the color to your preference */
+        text-align: center;
+        /* Center-align the text */
+    }
+
+    /* Center-align the button */
+    .center-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        /* Adjust the margin as needed */
+    }
+
+    /* Style the button */
+    button {
+        background-color: #007bff;
+        /* Button background color */
+        color: #fff;
+        /* Button text color */
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        /* Rounded corners */
+        cursor: pointer;
+    }
+
+    /* Style the button on hover */
+    button:hover {
+        background-color: #0056b3;
+        /* Hover background color */
+    }
+</style>
+
+<h1>{% trans "Confirm E-mail Address" %}</h1>
+
+{% if confirmation %}
+
+{% user_display confirmation.email_address.user as user_display %}
+
+<p>
+    {% blocktrans with confirmation.email_address.email as email %}
+    Please confirm that {{ email }} is an e-mail address for user: "{{ user_display }}".
+    {% endblocktrans %}
+</p>
+
+<div class="center-button">
+    <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+        {% csrf_token %}
+        <button type="submit">{% trans 'Confirm E-mail' %}</button>
+    </form>
+</div>
+
+{% else %}
+
+{% url 'account_email' as email_url %}
+
+<p>{% blocktrans %}
+    This e-mail confirmation link expired or is invalid. Please issue a new e-mail confirmation request.
+    {% endblocktrans %}
+</p>
+
+{% endif %}
+{% endblock %}

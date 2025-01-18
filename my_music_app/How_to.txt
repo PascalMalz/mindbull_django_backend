@@ -1,0 +1,10 @@
+Activate env:
+source mvenv/bin/activate
+service apache2 stop
+python3 manage.py runserver 0.0.0.0:80
+
+python manage.py makemigrations
+python manage.py migrate
+
+Useful commands:
+curl ifconfig.me

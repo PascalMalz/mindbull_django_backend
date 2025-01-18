@@ -1,0 +1,68 @@
+mysql -u root -p
+use mindbull
+show tables;
+...delete all of them
+DROP TABLE IF EXISTS
+    music_app_audio,
+    music_app_audiotag,
+    music_app_bugandenhancementreport,
+    music_app_comment,
+    music_app_composition,
+    music_app_compositionaudio,
+    music_app_compositiontag,
+    music_app_contenttag,
+    music_app_event,
+    music_app_favorite,
+    music_app_image,
+    music_app_personalgrowthcharacteristic,
+    music_app_post,
+    music_app_postimage,
+    music_app_posttag,
+    music_app_product,
+    music_app_rating,
+    music_app_subscription,
+    music_app_tag,
+    music_app_tagrating,
+    music_app_transaction,
+    sound_file;
+
+show tables;
+...check if that was all from this app
+exit
+...delete migration files
+python manage.py makemigrations music_app
+python manage.py migrate music_app zero --fake
+python manage.py migrate music_app
+
+
+Empty all tables except usic_app_personalgrowthcharacteristic,
+mysql -u root -p
+use mindbull
+show tables;
+...empty all of them
+TRUNCATE TABLE music_app_audio;
+TRUNCATE TABLE music_app_audiotag;
+TRUNCATE TABLE music_app_bugandenhancementreport;
+TRUNCATE TABLE music_app_comment;
+TRUNCATE TABLE music_app_composition;
+TRUNCATE TABLE music_app_compositionaudio;
+TRUNCATE TABLE music_app_compositiontag;
+TRUNCATE TABLE music_app_contenttag;
+TRUNCATE TABLE music_app_event;
+TRUNCATE TABLE music_app_favorite;
+TRUNCATE TABLE music_app_image;
+TRUNCATE TABLE music_app_post;
+TRUNCATE TABLE music_app_postimage;
+TRUNCATE TABLE music_app_posttag;
+TRUNCATE TABLE music_app_product;
+TRUNCATE TABLE music_app_rating;
+TRUNCATE TABLE music_app_subscription;
+TRUNCATE TABLE music_app_tag;
+TRUNCATE TABLE music_app_tagrating;
+TRUNCATE TABLE music_app_transaction;
+TRUNCATE TABLE sound_file;
+
+code to import personal_growth_characteristics:
+python manage.py import_personal_growth_characteristics /home/admin_0/django_sounds/music_app/management/db_imports/personal_growth_characteristics.csv
+
+if nothing works anymore see drive manual

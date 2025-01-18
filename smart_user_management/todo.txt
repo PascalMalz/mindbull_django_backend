@@ -1,0 +1,48 @@
+
+# views.py
+from django.http import HttpResponseForbidden
+from django.shortcuts import render
+from allauth.account.views import SignupView, LoginView
+from allauth.account.views import PasswordResetView, PasswordResetFromKeyView
+from allauth.account.views import EmailVerificationSentView, ConfirmEmailView
+from allauth.account.views import LogoutView
+from allauth.socialaccount.views import SignupView as SocialSignupView
+from allauth.socialaccount.views import ConnectionsView
+
+# Custom registration view for Flutter app
+def registration_view(request):
+    user_agent = request.META.get('HTTP_USER_AGENT', '')
+
+    # Check if the request is coming from your Flutter app
+    if 'YourFlutterApp' not in user_agent:
+        return HttpResponseForbidden('Access Denied')
+
+    # Handle registration logic for your app here
+
+# Custom email confirmation view
+def custom_email_confirmation_view(request):
+    # You can implement your own email confirmation logic here
+    return render(request, 'custom_email_confirmation.html')
+
+# URLs
+urlpatterns = [
+    # URL for registration view for your Flutter app
+    path('register/', registration_view, name='registration_view'),
+
+    # URL for email confirmation (accessible through the browser)
+    path('custom-email-confirmation/', custom_email_confirmation_view, name='custom_email_confirmation'),
+
+    # Other allauth views (e.g., login, logout, password reset, etc.)
+    path('accounts/signup/', SignupView.as_view(), name='account_signup'),
+    path('accounts/login/', LoginView.as_view(), name='account_login'),
+    path('accounts/logout/', LogoutView.as_view(), name='account_logout'),
+    path('accounts/password/reset/', PasswordResetView.as_view(), name='account_reset_password'),
+    path('accounts/password/reset/<uidb64>/<token>/', PasswordResetFromKeyView.as_view(), name='account_reset_password_from_key'),
+    path('accounts/verify-email/', EmailVerificationSentView.as_view(), name='account_email_verification_sent'),
+    path('accounts/confirm-email/<key>/', ConfirmEmailView.as_view(), name='account_confirm_email'),
+    path('accounts/social/signup/', SocialSignupView.as_view(), name='socialaccount_signup'),
+    path('accounts/social/connections/', ConnectionsView.as_view(), name='socialaccount_connections'),
+]
+In this example, you have separate views for registration (registration_view) and email confirmation (custom_email_confirmation_view). The registration_view checks the user-agent header to ensure it's coming from your Flutter app, while the email confirmation view (custom_email_confirmation_view) is accessible through the browser.
+
+By structuring your views and URLs this way, you can control access to registration actions based on the user-agent header and allow email confirmation to be initiated through the browser as needed.

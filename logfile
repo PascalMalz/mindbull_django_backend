@@ -1,0 +1,43 @@
+[22/Aug/2023 22:27:15] DEBUG [smart_user_management.views:41] ya29.a0AfB_byCkyw-Ik_Ss9CMSTHkmMP6V4okNBZ_qYQpOV--Jeo8vcSz5sEcn5NrJVj18MPPHJXtIFjTk-_iQepI7Ea5fYwZMZvmjAtQaGb_OXH6ksFH87RsrBaWgU3L6nzwP0eJ1_fuc4_F7PCjb-hZGu-NQVHRTGebdu9vjOAaCgYKAQUSARISFQHsvYlsp4YDMQ_Z2tU18qCkgaoJNA0173
+[22/Aug/2023 22:27:15] ERROR [django.request:241] Internal Server Error: /sum/auth/social/
+Traceback (most recent call last):
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/django/views/generic/base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/admin_0/django_sounds/smart_user_management/views.py", line 43, in post
+    token = adapter.parse_token(access_token)
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/allauth/socialaccount/providers/oauth2/views.py", line 60, in parse_token
+    token = SocialToken(token=data["access_token"])
+TypeError: string indices must be integers
+[22/Aug/2023 22:35:24] WARNING [django.request:241] Forbidden (Permission denied): /
+Traceback (most recent call last):
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/baipw/middleware.py", line 18, in __call__
+    response = self.process_request(request)
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/baipw/middleware.py", line 41, in process_request
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+[22/Aug/2023 22:36:47] WARNING [django.request:241] Forbidden (Permission denied): /
+Traceback (most recent call last):
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/baipw/middleware.py", line 18, in __call__
+    response = self.process_request(request)
+  File "/home/admin_0/django_sounds/mvenv/lib/python3.10/site-packages/baipw/middleware.py", line 41, in process_request
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+______________________________ 

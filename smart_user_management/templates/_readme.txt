@@ -1,0 +1,1 @@
+Here are my custom standalone templates which dont override anything but import e.g. account object from Allauth

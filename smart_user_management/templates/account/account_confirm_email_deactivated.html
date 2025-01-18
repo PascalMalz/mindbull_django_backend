@@ -1,0 +1,47 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h3 class="card-title text-center">{% trans "Confirm E-mail Address" %}</h3>
+
+                    {% if confirmation %}
+
+                    {% user_display confirmation.email_address.user as user_display %}
+
+                    <p class="card-text text-center">
+                        {% blocktrans with confirmation.email_address.email as email %}
+                        Please confirm that {{ email }} is an e-mail address for user {{ user_display }}.
+                        {% endblocktrans %}
+                    </p>
+
+                    <div class="text-center">
+                        <form method="post" action="{% url 'account_confirm_email2' confirmation.key %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">{% trans 'Confirm Email' %}</button>
+                        </form>
+                    </div>
+
+                    {% else %}
+
+                    <p class="card-text text-center">
+                        {% blocktrans %}
+                        This e-mail confirmation link expired or is invalid. Please issue a new e-mail confirmation
+                        request.
+                        {% endblocktrans %}
+                    </p>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

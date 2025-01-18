@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Email Confirmed</h3>
+                    <p class="card-text text-center">
+                        Your email address has been successfully confirmed. You can now log in and access your account.
+                    </p>
+                    <div class="text-center">
+                        <a href="{% url 'login' %}" class="btn btn-primary">Log In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

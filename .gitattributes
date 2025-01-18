@@ -1,0 +1,2 @@
+media/audio_files/Gluecklich.mp3 filter=lfs diff=lfs merge=lfs -text
+media/exercise_media/20241216_152632.mp4 filter=lfs diff=lfs merge=lfs -text

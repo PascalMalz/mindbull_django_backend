@@ -1,0 +1,1 @@
+Allauth templates to override in this folder
